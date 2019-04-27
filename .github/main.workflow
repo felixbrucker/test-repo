@@ -1,7 +1,7 @@
 workflow "test" {
   on = "push"
   resolves = [
-    "Create release on tag",
+    "Post to Discord",
   ]
 }
 
@@ -15,4 +15,11 @@ action "Create release on tag" {
   needs = ["Tag"]
   secrets = ["GITHUB_TOKEN"]
   args = ["--name", "BHD-Burst-Proxy"]
+}
+
+action "Post to Discord" {
+  uses = "felixbrucker/github-actions/post-release-in-discord@master"
+  needs = ["Create release on tag"]
+  secrets = ["WEBHOOK_ID", "WEBHOOK_TOKEN"]
+  args = ["--authorName", "Felix Brucker", "--authorUrl", "https://github.com/felixbrucker", "--authorIcon", "https://avatars1.githubusercontent.com/u/5189997?s=40&v=4"]
 }
