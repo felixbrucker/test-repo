@@ -21,5 +21,4 @@ action "Post to Discord" {
   uses = "felixbrucker/github-actions/post-release-in-discord@master"
   needs = ["Create release on tag"]
   secrets = ["WEBHOOK_ID", "WEBHOOK_TOKEN"]
-  args = ["--authorName", "Felix Brucker", "--authorUrl", "https://github.com/felixbrucker", "--authorIcon", "https://avatars1.githubusercontent.com/u/5189997?s=40&v=4"]
 }
