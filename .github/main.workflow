@@ -11,6 +11,6 @@ action "Tag" {
 }
 
 action "Create release on tag" {
-  uses = "felixbrucker/github-actions/publish-release"
+  uses = "felixbrucker/github-actions/publish-release@master"
   needs = ["Tag"]
 }
